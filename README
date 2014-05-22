@@ -1,0 +1,10 @@
+This repository contains a Vagrant setup to test MQTT as a transport protocol for Zabbix item values.
+
+Doing a 'vagrant up' will create a new Zabbix server (zbxserver;192.168.60.10), a Mosquitto broker host (broker;192.168.60.20) and 2 Ubuntu machines (ubox[1-2]).
+
+Running 'mqtt-discovery.sh' will setup a MQTT subscriber that will create new hosts within Zabbix via LLD.
+'mqtt-itemfeed.sh' will then forward itemvalues to zabbix.
+(These scripts need to keep running on the zbxserver for now.)
+
+On ubox1 and ubox2 we can now run 'mqtt-bridge.sh' to put zabbix agent item values on the MQTT bus.
+
